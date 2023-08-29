@@ -1,3 +1,4 @@
+use habit_tracker;
 drop table if exists users;
 -- users table
 create table users
