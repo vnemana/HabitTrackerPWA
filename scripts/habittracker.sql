@@ -1,19 +1,19 @@
 use habit_tracker;
+drop table if exists habits;
 drop table if exists users;
 -- users table
 create table users
 (
-    id         int auto_increment
+    id         int auto_increment 
         primary key,
-    user_email varchar(128) null,
-    password   varchar(16)  null,
-    first_name varchar(32)  null,
-    last_name  varchar(32)  null
+    email varchar(128) null,
+    first_name varchar(128) null,
+    last_name  varchar(128) null,
+    full_name varchar(128) null
 );
 
 
 -- habits table
-drop table if exists habits;
 create table habits
 (
     name        varchar(256)         not null,

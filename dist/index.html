@@ -9,15 +9,19 @@
     <link rel="stylesheet" href="../css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
+    <script src="./db.bundle.js"></script>
 </head>
 <body>
     <div class="container">
         <h4>Hello world!</h4>
-        <script type="module" src="db.bundle.js"></script>
-        <script src="index.bundle.js"></script>
-        <a href="#" class="btn-small" id="queryButton" waves-effect waves-light>Query</a>    
+        <!-- <a href="#" class="btn-small" id="queryButton" waves-effect waves-light>Query</a>     -->
     </div>
 
+    <script type="text/javascript">
+        function callAddUser(responsePayload) {
+            addUser(responsePayload)
+        }
+    </script>
     <script>
         function handleCallbackFunction(response) {
            // decodeJwtResponse() is a custom function defined by you
@@ -32,6 +36,8 @@
            console.log('Family Name: ' + responsePayload.family_name);
            console.log("Image URL: " + responsePayload.picture);
            console.log("Email: " + responsePayload.email);
+           console.log("Invoking AddUser")
+           callAddUser(responsePayload);
         }
     </script>
     <script>

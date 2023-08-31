@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("if ('serviceWorker' in navigator) {\n    navigator.serviceWorker.register('../sw.js')\n        .then((req) => console.log('service worker was registered', req))\n        .catch((err) => console.log('service worker was not registered', err))\n}\n\nfunction onSignIn(googleUser) {\n    // Access the user's ID token and other information\n    var idToken = googleUser.getAuthResponse().id_token;\n    var profile = googleUser.getBasicProfile();\n    var email = profile.getEmail();\n    // Send the ID token and email to your backend for verification and further processing\n    // ...\n    console.log(\"idToken: \", idToken)\n  }\n  \n\n//# sourceURL=webpack://habittracker/./src/index.js?");
+eval("if ('serviceWorker' in navigator) {\n    navigator.serviceWorker.register('../sw.js')\n        .then((req) => console.log('service worker was registered', req))\n        .catch((err) => console.log('service worker was not registered', err))\n}\n\n\n//# sourceURL=webpack://habittracker/./src/index.js?");
 
 /***/ })
 
