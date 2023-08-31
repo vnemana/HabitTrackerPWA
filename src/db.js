@@ -2,10 +2,12 @@ const serverAddress = "http://localhost:3000"
 global.addUser = function (user) {
     console.log("Calling AddUser");
     let addUserAddress = serverAddress + "/users/add"
+    let localhostHeaders = new Headers()
+    localhostHeaders.append('Content-Type', 'application/json');
     fetch(addUserAddress, {
         method: "POST",
         body: JSON.stringify(user),
-        headers: { "Content-type": "application/json; charset=UTF-8"}
+        headers: localhostHeaders
     });
 }
 
