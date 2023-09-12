@@ -11,7 +11,7 @@ global.addUser = function (user) {
     });
 }
 
-function decodeJwtResponse (token) {
+global.decodeJwtResponse = function (token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
@@ -21,19 +21,9 @@ function decodeJwtResponse (token) {
     return JSON.parse(jsonPayload);
 }
 
-function handleCallbackFunction(response) {
+global.handleCallbackFunction = function (response) {
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
-    console.log("Callback is called")
-    console.log("Credential: " + response.credential)
     const responsePayload = decodeJwtResponse(response.credential);
-
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
-    console.log("Invoking AddUser")
     addUser(responsePayload);
  }
