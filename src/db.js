@@ -8,6 +8,17 @@ global.addUser = function (user) {
         method: "POST",
         body: JSON.stringify(user),
         headers: localhostHeaders
+    }).then(response => {response.json();})
+    .then(data => {
+        console.log('data:', data);
+        console.log('elements: ', document.getElementsByClassName);
+        const signinDiv = document.getElementById('google_signin');
+        if (signinDiv) {
+            console.log("Trying to hide the signIn element");
+            signinDiv.style.display = 'none';
+        } else {
+            console.log("Couldn't find a signIn element");
+        }
     });
 }
 
