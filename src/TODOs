@@ -1,0 +1,4 @@
+- Add tests on db.js
+- Ensure that User ID is used a global identifier for the app's session.
+- Begin Data entry for habits.
+- Habit display - github style!
