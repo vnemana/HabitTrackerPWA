@@ -1,6 +1,7 @@
 const serverAddress = "http://localhost:3000"
-global.addUser = function (user) {
-    console.log("Calling AddUser");
+
+global.addUser = async function (user) {
+    // console.log("Calling AddUser ", user);
     let addUserAddress = serverAddress + "/users/add"
     let localhostHeaders = new Headers()
     localhostHeaders.append('Content-Type', 'application/json');
@@ -9,14 +10,14 @@ global.addUser = function (user) {
         body: JSON.stringify(user),
         headers: localhostHeaders
     }).then((response) => {
-        console.log("response: ");
+        // console.log("response: ");
+        // console.log("response status: ", response.status);
         return response.json();
     })
     .then(data => {
-        console.log('data:', data[0]);
+        // console.log('data:', data[0]);
         const signinDiv = document.getElementById('google_signin');
         if (signinDiv) {
-            console.log("Trying to hide the signIn element");
             signinDiv.style.display = 'none';
         } else {
             console.log("Couldn't find a signIn element");
@@ -38,5 +39,5 @@ global.handleCallbackFunction = function (response) {
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
     const responsePayload = decodeJwtResponse(response.credential);
-    addUser(responsePayload);
+    addUser(responsePayload).then(()=>{});
  }
